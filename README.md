@@ -26,4 +26,3 @@ GOPATH /mnt/hgfs/mahjong/golang/go-test
 
 ## 生成go 配置文件		
 	cd tool && ./make_all_go.sh
-	test
