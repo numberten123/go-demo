@@ -1,6 +1,8 @@
 # go-demo
 Simple go-demo include tcp,web,protobuf ,mysql,log...
+
 go version go1.9.3
+
 GOPATH /mnt/hgfs/mahjong/golang/go-test
 
 ## mysql 驱动
