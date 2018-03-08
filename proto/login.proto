@@ -1,0 +1,10 @@
+syntax = "proto2";
+package go_proto;
+
+//协议测试
+message m_1208_tos {
+	required	string		to_server		= 1;
+}
+message m_1208_toc {
+	required	string		to_client	= 1;
+}
