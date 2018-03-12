@@ -135,3 +135,9 @@
 [Error]2018/03/08 16:04:41 main 100000000000000
 [Error]2018/03/08 16:06:15 tcp Fatal error: %s proto: go_proto.M_1208Tos: illegal tag 0 (wire type 0)
 [Error]2018/03/08 16:45:16 main 100000000000000
+[Error]2018/03/10 18:11:02 main 100000000000000
+[Error]2018/03/10 18:17:13 Cfg_store not match: 7
+[Error]2018/03/10 18:34:29 Cfg_store not match: 7
+[Error]2018/03/12 17:51:30 Cfg_store not match: 7
+[Error]2018/03/12 17:51:55 Cfg_hu_rate not match: 19
+[Error]2018/03/12 17:53:59 Cfg_hu_rate not match: 19

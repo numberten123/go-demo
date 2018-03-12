@@ -32,7 +32,7 @@ def excle_to_go(excle_file,export_type,output_dir='./output/'):
 							v = int(v)
 						all.append(str(v))
 						temp1_str=str(v)
-						line_str = '\t\tcase '+temp1_str+':\n\t\t\treturn go_include.'+Table_name+'{\n\t\t\t\t'
+						line_str = '\n\t\t'+temp1_str+':\n\t\t\tgo_include.'+Table_name+'{\n\t\t\t\t'
 					feildname = sheet.cell(EXPORT_VALUE_NAME_ROW,c).value
 					value_str = ''+ feildname.capitalize()+ ':'
 					_type = sheet.cell(EXPORT_VALUE_TYPE_ROW,c).value
@@ -54,11 +54,11 @@ def excle_to_go(excle_file,export_type,output_dir='./output/'):
 						value_str += nowstr+ ','
 					line_value.append(value_str)
 			v = '\n\t\t\t\t'.join(line_value)
-			line_str = line_str+v+'\n\t\t\t}\n'
+			line_str = line_str+v+'\n\t\t\t},'
 			erl_table.append(line_str)
 		
 		str1_str=','.join(all)
-		erl =  '// !!! DO NOT EDIT !!!\n// auto generated from Excel files\npackage go_config\n\nimport(\n\t"test/go_include"\n\t"test/go_log"\n)\n\nfunc '+Table_name+'(key uint32) (go_include.'+Table_name+') {\n\tswitch key{\n' + ''.join(erl_table) + '\t\tdefault:\n\t\t\tgo_log.Error("Cfg_store not match:", key)\n\t\t\treturn go_include.'+Table_name+'{}\n\t}\n}\n'
+		erl =  '// !!! DO NOT EDIT !!!\n// auto generated from Excel files\npackage go_config\n\nimport(\n\t"test/go_include"\n\t"test/go_log"\n)\n\nfunc '+Table_name+'(key uint32) (go_include.'+Table_name+') {\n\tvar '+table_name+' = map[uint32]go_include.'+Table_name+'{'+''.join(erl_table)+'\n\t}\n\tif result, ok := '+table_name+'[key]; ok {\n\t\treturn result\n\t}\n\tgo_log.Error("'+Table_name+' not match:", key)\n\treturn go_include.'+Table_name+'{}\n}'
 		f = open(output_dir + table_name + '.go','wb')
 		f.write(erl)
 		f.close()
